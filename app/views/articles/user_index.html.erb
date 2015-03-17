@@ -1,18 +1,18 @@
-<h2>Home</h2>
-<%= link_to 'My Articles',user_articles_path %>
+<h2><%= current_user.nick_name %> Article</h2>
+<%= link_to 'New Articles', new_article_path %>  |  <%= link_to 'Back To Index', root_path %>
 <table>
   <tr>
 	<th>Title</th>
 	<th>Content</th>
-	<th>Nick Name</th>
   </tr>
   <% @articles.each do |article| %>
 	<tr>
 	  <td><%= article.title %></td>
 	  <td><%= article.content %></td>
-	  <td><%= @users.find(article.user_id).nick_name %></td>
 	  <td><%= article.created_at.strftime("%Y-%m-%d %H:%M") %></td>
 	  <td><%= link_to 'Show', article_path(article) %></td>
+	  <td><%= link_to 'Edit', edit_article_path(article) %></td>
+	  <td><%= link_to 'Delete', destroy_article_path(article),:method => :delete, data:{ confirm:'Are you sure?' } %></td>
 	</tr>
   <% end %>
 </table>

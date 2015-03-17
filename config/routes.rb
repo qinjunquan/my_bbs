@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  root :to => "articles#index"
+  root :to => "articles#index" 
+  get   '/articles/new'        => "articles#new" , :as => "new_article"
+  get   '/articles/user_index' => "articles#user_index", :as => "user_articles"
+  get   '/articles/:id'        => "articles#show" , :as => "article"
+  get   '/articles/:id/edit'   => "articles#edit" , :as => "edit_article"
+  delete '/article/:id'        => "articles#destroy", :as => "destroy_article"
+  put   '/articles/:id'        => "articles#update", :as => "update_article"
+  post  '/articles/'           => "articles#create" , :as => "create_article"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

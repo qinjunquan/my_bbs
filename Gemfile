@@ -1,6 +1,5 @@
 source 'https://ruby.taobao.org'
-
-
+#source 'http://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 # Use mysql as the database for Active Record
@@ -27,6 +26,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'devise'
+
+gem 'kaminari' 
+
+gem 'debugger'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
