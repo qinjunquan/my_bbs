@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
 	@article = Article.new(article_params)
 	@article.user_id = current_user.id
 	if @article.save
-	  redirect_to article_path(@article)
+	  redirect_to user_article_path(@article)
 	else
 	  redirect_to new_article_path
 	end
@@ -27,6 +27,7 @@ class ArticlesController < ApplicationController
 
   def show
 	@article = Article.find(params[:id])
+	@comments = Comment.where(:article_id => params[:id])
   end
 
   def edit

@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function (){
+  app.global.init();
+  app.article.init();
+});

@@ -1,5 +1,7 @@
-<h2>Show</h2>
 <p>
+  <input type="hidden" value="<%= @article.id %>" id="s-article-id">
+</p>
+<p>  
   <strong>Title</strong><br/>
   <%= @article.title %>
 </p>
@@ -8,4 +10,30 @@
   <%= @article.content %>
 </p>
 
-<%= link_to 'Back', user_signed_in? ? user_articles_path : root_path %>
+<h3>Comments</h3>
+<% @comments.each do |comment| %>
+<div data-id="<%= comment.id %>" class="s-comment">
+  <p><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %>  <b><%= User.find(comment.user_id).nick_name %></b> 
+  <% if(user_signed_in? && current_user.id == comment.user_id) %>
+	<%= link_to 'Delete', {:controller => "comments", :action => "destroy", :id => comment}, :class => "s-delete" %>
+  <% end %></p>
+  <p><%= comment.content %></p>
+</div>
+<% end %>
+
+<h4>Add Commentis</h4>
+<%= form_tag(create_comment_path, :method => :post) do  %>
+  <p>
+	<%= text_area_tag :content %>
+  </p>
+
+  <p>
+	<%= submit_tag :commit %>
+  </p>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to 'Back', user_articles_path %>
+<% else %>
+  <%= link_to 'Back', root_path %>
+<% end %>

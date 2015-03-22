@@ -5,9 +5,13 @@ Rails.application.routes.draw do
   get   '/articles/user_index' => "articles#user_index", :as => "user_articles"
   get   '/articles/:id'        => "articles#show" , :as => "article"
   get   '/articles/:id/edit'   => "articles#edit" , :as => "edit_article"
-  delete '/article/:id'        => "articles#destroy", :as => "destroy_article"
+  delete '/articles/:id'       => "articles#destroy", :as => "destroy_article"
   put   '/articles/:id'        => "articles#update", :as => "update_article"
   post  '/articles/'           => "articles#create" , :as => "create_article"
+
+  #comments
+  post '/articles/:id/comments/' => "comments#create", :as => "create_comment"
+  delete '/articles/:id/comments/'=> "comments#destroy", :as => "destroy_comment"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

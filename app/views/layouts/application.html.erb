@@ -4,7 +4,7 @@
   <title>MyBbs</title>
   <div id="user_nav">    
     <% if user_signed_in? %>    
-      Signed in as <%= current_user.nick_name %>. Not you?    
+      Signed in as <b><%= current_user.nick_name %></b>. Not you?    
       <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>  |
 	  <%= link_to "Change account", edit_user_registration_path %>  
     <% else %>    
