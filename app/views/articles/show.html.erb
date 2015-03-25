@@ -13,7 +13,7 @@
 <h3>Comments</h3>
 <% @comments.each do |comment| %>
 <div data-id="<%= comment.id %>" class="s-comment">
-  <p><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %>  <b><%= User.find(comment.user_id).nick_name %></b> 
+  <p> <%= image_tag(User.find(comment.user_id).avatar_url(:small)) %><b><%= User.find(comment.user_id).nick_name %></b> <em><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %> </em> 
   <% if(user_signed_in? && current_user.id == comment.user_id) %>
 	<%= link_to 'Delete', {:controller => "comments", :action => "destroy", :id => comment}, :class => "s-delete" %>
   <% end %></p>

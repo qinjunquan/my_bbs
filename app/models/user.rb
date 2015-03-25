@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :nick_name ,presence: true, uniqueness: true
   has_many :articles
+  mount_uploader :avatar, AvatarUploader
 end
