@@ -12,8 +12,9 @@
 
 <h3>Comments</h3>
 <% @comments.each do |comment| %>
-<div data-id="<%= comment.id %>" class="s-comment">
+<div data-comment-id="<%= comment.id %>" class="s-comment">
   <p> <%= image_tag(User.find(comment.user_id).avatar_url(:small)) %><b><%= User.find(comment.user_id).nick_name %></b> <em><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %> </em> 
+  <span><a href = "/user_comment_like_ships/up_like_count" class="s-up-like" data-count="<%= comment.like_count %>">赞<%= comment.like_count %></a></span>
   <% if(user_signed_in? && current_user.id == comment.user_id) %>
 	<%= link_to 'Delete', {:controller => "comments", :action => "destroy", :id => comment}, :class => "s-delete" %>
   <% end %></p>

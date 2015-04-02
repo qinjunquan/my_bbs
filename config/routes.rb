@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   #comments
   post '/articles/:id/comments/' => "comments#create", :as => "create_comment"
   delete '/articles/:id/comments/'=> "comments#destroy", :as => "destroy_comment"
+  # up_like_count
+  get '/user_comment_like_ships/up_like_count' => 'user_comment_like_ships#up_like_count'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

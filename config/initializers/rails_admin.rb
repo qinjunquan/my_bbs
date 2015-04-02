@@ -1,7 +1,7 @@
 #encoding: utf-8
 RailsAdmin.config do |config|
   config.included_models = [
-	User, Article , Comment
+	User, Article , Comment, UserCommentLikeShip
   ]
   ### Popular gems integration
 
@@ -39,7 +39,8 @@ RailsAdmin.config do |config|
   Navigation = {
 	'UserManage' => '用户管理',
 	'ArticleManage' => '文章管理',
-	'CommentManage' => '评论管理'
+	'CommentManage' => '评论管理',
+	'LikeManage' => '用户评论点赞管理'
   }
 
   config.model User do 
@@ -81,6 +82,16 @@ RailsAdmin.config do |config|
 
   config.model Comment do 
 	navigation_label Navigation['CommentManage']
+  end
+
+  config.model UserCommentLikeShip do 
+	navigation_label Navigation['LikeManage']
+	list do
+	  fields :comment, :user ,:created_at
+	end
+	edit do
+	  fields :comment_id, :user_id
+	end
   end
 
 end
