@@ -27,7 +27,7 @@ gem 'spring',        group: :development
 
 gem 'devise'
 
-gem 'kaminari' 
+gem 'kaminari'
 
 gem 'debugger'
 
@@ -35,7 +35,8 @@ gem 'carrierwave', '~> 0.10.0'
 
 gem 'mini_magick'
 
-gem 'rails_admin', :path => "../plugins/rails_admin"
+#gem 'rails_admin', :path => "../plugins/rails_admin"
+gem 'rails_admin', :path => "./vendor/rails_admin", :branch => "master"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
